@@ -6,10 +6,15 @@ using System.IO;
 public class DownloadVideo
 {
     private YoutubeDLP _youtubeDlp = new();
-    private string inputUrlFilePath = Path.Combine(Directory.GetCurrentDirectory(), "urlLinks.txt");
+    private string _inputUrlFilePath = Path.Combine(Directory.GetCurrentDirectory(), "InputsOutputsAITraining\\urlLinks.txt");
+    private string _videoOutputPath;
+
+    public DownloadVideo(string videoOutputPath)
+    {
+        _videoOutputPath = videoOutputPath;
+    }
 
     //using a library for YoutubeDL program which downloads videos from most popular websites
-    //this method is used for twitch clips but can accept any other videos that YoutubeDL allows
     public async Task DownloadClipToFile()
     {
         //get url links from text file
@@ -30,15 +35,17 @@ public class DownloadVideo
         {
             try
             {
+                //output error logs to console
                 _youtubeDlp.StandardOutputEvent += (sender, output) => Console.WriteLine(output);
                 _youtubeDlp.StandardErrorEvent += (sender, errorOutput) => Console.WriteLine(errorOutput);
 
-
-                string formattedUrl = FormatUrlForFile(url);
-                string outputFilePath = Path.Combine(Directory.GetCurrentDirectory(), $"VideoOutput\\{formattedUrl}");
+                //create output file path and set output file path in ytdlp options txt file
+                string fileName = FormatUrlForFile(url);
+                string outputFilePath = Path.Combine(_videoOutputPath, $"\\{fileName}");
                 _youtubeDlp.Options.FilesystemOptions.Output = outputFilePath;
                 File.WriteAllText("options.config", _youtubeDlp.Options.Serialize());
 
+                //download the video
                 Console.WriteLine("Starting download...");
                 Console.WriteLine("Your clip is currently being downloaded");
                 _youtubeDlp.Download(url);
@@ -52,7 +59,7 @@ public class DownloadVideo
                 }
 
                 //if mp4 is downloaded and exists, delete url from the input Url file
-                bool doesFileExist = DoesFileExist(outputFilePath, formattedUrl);
+                bool doesFileExist = DoesFileExist(fileName);
                 if (doesFileExist == true)
                 {
                     DeleteUrlFromFile(url);
@@ -74,7 +81,7 @@ public class DownloadVideo
 
     public string[] GetUrlLinks()
     {
-        var text = File.ReadAllText(inputUrlFilePath);
+        var text = File.ReadAllText(_inputUrlFilePath);
         var urlLinks = text.Split("\r\n", StringSplitOptions.RemoveEmptyEntries);
         return urlLinks;
     }
@@ -88,10 +95,10 @@ public class DownloadVideo
         return input.Replace("/", "").Replace("\\", "").Replace(":", "").Replace("?", "");
     }
 
-    public bool DoesFileExist(string filePath, string fileName)
+    public bool DoesFileExist(string fileName)
     {
         bool doesFileExist = false;
-        filePath = Path.Combine(Directory.GetCurrentDirectory(), $"VideoOutput");
+        string filePath = _videoOutputPath;
         var files = Directory.EnumerateFiles(filePath);
         doesFileExist = files.Any(file => Path.GetFileNameWithoutExtension(file) == fileName);
         if (File.Exists(filePath) == true)
@@ -101,9 +108,9 @@ public class DownloadVideo
 
     public void DeleteUrlFromFile(string url)
     {
-        var lines = File.ReadAllLines(inputUrlFilePath);
+        var lines = File.ReadAllLines(_inputUrlFilePath);
         var newLines = lines.Where(line => line != url).ToArray();
-        File.WriteAllLines(inputUrlFilePath, newLines);
+        File.WriteAllLines(_inputUrlFilePath, newLines);
     }
 
 }
