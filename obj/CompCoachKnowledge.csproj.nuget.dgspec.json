@@ -49,6 +49,10 @@
             "NYoutubeDLP": {
               "target": "Package",
               "version": "[0.13.0, )"
+            },
+            "pythonnet": {
+              "target": "Package",
+              "version": "[3.0.1, )"
             }
           },
           "imports": [

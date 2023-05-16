@@ -16,3 +16,4 @@ C:\Users\Michael\source\repos\CompCoachKnowledge\obj\Debug\net6.0\refint\CompCoa
 C:\Users\Michael\source\repos\CompCoachKnowledge\obj\Debug\net6.0\CompCoachKnowledge.pdb
 C:\Users\Michael\source\repos\CompCoachKnowledge\obj\Debug\net6.0\CompCoachKnowledge.genruntimeconfig.cache
 C:\Users\Michael\source\repos\CompCoachKnowledge\obj\Debug\net6.0\ref\CompCoachKnowledge.dll
+C:\Users\Michael\source\repos\CompCoachKnowledge\bin\Debug\net6.0\Python.Runtime.dll

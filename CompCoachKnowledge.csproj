@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="NYoutubeDLP" Version="0.13.0" />
+    <PackageReference Include="pythonnet" Version="3.0.1" />
   </ItemGroup>
 
 </Project>
