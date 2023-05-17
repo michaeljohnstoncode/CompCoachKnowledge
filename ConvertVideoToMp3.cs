@@ -2,7 +2,7 @@
 
 using FFMpegCore;
 
-namespace CompCoachKnowledge
+namespace VideoUrlToChatBot
 {
     public class ConvertVideoToMp3
     {

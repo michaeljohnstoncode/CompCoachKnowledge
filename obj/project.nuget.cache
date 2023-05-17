@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PaYv5SKZUMctvml2mi6CCVp3wWhqF7Jw88JR34fJXqZ7C9+/JYe2npKsmUIgC1Lt+vUFnd+AwQx1uHgXcfn6dA==",
+  "dgSpecHash": "EDYVecXnyl9eLXfOia7jskw0/4sn9jItArY1mH6/issvb981cnb7tYJqtq9A/Fe4g3dpLm1Hgzz2px1YYY03og==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Michael\\source\\repos\\CompCoachKnowledge\\CompCoachKnowledge.csproj",
+  "projectFilePath": "C:\\Users\\Michael\\source\\repos\\VideoUrlToChatBot\\VideoUrlToChatBot.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Michael\\.nuget\\packages\\ffmpegcore\\5.1.0\\ffmpegcore.5.1.0.nupkg.sha512",
     "C:\\Users\\Michael\\.nuget\\packages\\instances\\3.0.0\\instances.3.0.0.nupkg.sha512",

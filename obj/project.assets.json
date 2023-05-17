@@ -1131,11 +1131,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Michael\\source\\repos\\CompCoachKnowledge\\CompCoachKnowledge.csproj",
-      "projectName": "CompCoachKnowledge",
-      "projectPath": "C:\\Users\\Michael\\source\\repos\\CompCoachKnowledge\\CompCoachKnowledge.csproj",
+      "projectUniqueName": "C:\\Users\\Michael\\source\\repos\\VideoUrlToChatBot\\VideoUrlToChatBot.csproj",
+      "projectName": "VideoUrlToChatBot",
+      "projectPath": "C:\\Users\\Michael\\source\\repos\\VideoUrlToChatBot\\VideoUrlToChatBot.csproj",
       "packagesPath": "C:\\Users\\Michael\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Michael\\source\\repos\\CompCoachKnowledge\\obj\\",
+      "outputPath": "C:\\Users\\Michael\\source\\repos\\VideoUrlToChatBot\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
