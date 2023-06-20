@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "EDYVecXnyl9eLXfOia7jskw0/4sn9jItArY1mH6/issvb981cnb7tYJqtq9A/Fe4g3dpLm1Hgzz2px1YYY03og==",
+  "dgSpecHash": "cRJNYhHrPTvK3QuImqmwl57hZenzkLLxi/VVE3RUgWbW3MEBMDpC3hWW7UokRTcBy0+iYwqPpv0HdDkToG6D8A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Michael\\source\\repos\\VideoUrlToChatBot\\VideoUrlToChatBot.csproj",
   "expectedPackageFiles": [
@@ -9,8 +9,7 @@
     "C:\\Users\\Michael\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Michael\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Michael\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
-    "C:\\Users\\Michael\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
-    "C:\\Users\\Michael\\.nuget\\packages\\nyoutubedlp\\0.13.0\\nyoutubedlp.0.13.0.nupkg.sha512",
+    "C:\\Users\\Michael\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\Michael\\.nuget\\packages\\pythonnet\\3.0.1\\pythonnet.3.0.1.nupkg.sha512",
     "C:\\Users\\Michael\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
     "C:\\Users\\Michael\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
@@ -23,10 +22,7 @@
     "C:\\Users\\Michael\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\Michael\\.nuget\\packages\\system.text.json\\7.0.2\\system.text.json.7.0.2.nupkg.sha512",
     "C:\\Users\\Michael\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
-    "C:\\Users\\Michael\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.16\\microsoft.windowsdesktop.app.ref.6.0.16.nupkg.sha512",
-    "C:\\Users\\Michael\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.16\\microsoft.netcore.app.ref.6.0.16.nupkg.sha512",
-    "C:\\Users\\Michael\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.16\\microsoft.aspnetcore.app.ref.6.0.16.nupkg.sha512",
-    "C:\\Users\\Michael\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.16\\microsoft.netcore.app.host.win-x64.6.0.16.nupkg.sha512"
+    "C:\\Users\\Michael\\.nuget\\packages\\youtubedlsharp\\1.0.0-beta6\\youtubedlsharp.1.0.0-beta6.nupkg.sha512"
   ],
   "logs": []
 }

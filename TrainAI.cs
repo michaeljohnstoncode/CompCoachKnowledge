@@ -12,6 +12,7 @@ namespace VideoUrlToChatBot
 
         public void RunAITrainer()
         {
+            //string python needs to locate where python.exe is downloaded, requires method to search for python.exe?
             string python = @"C:\Python310\python.exe";
             string script = Path.Combine(Directory.GetCurrentDirectory(), "InputsOutputsAITraining\\app.py");
             ProcessStartInfo startInfo = new ProcessStartInfo(python)

@@ -58,29 +58,17 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Newtonsoft.Json/13.0.1": {
+      "Newtonsoft.Json/13.0.2": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
-        }
-      },
-      "NYoutubeDLP/0.13.0": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.1"
-        },
-        "compile": {
-          "lib/netcoreapp3.1/NYoutubeDLP.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/NYoutubeDLP.dll": {}
         }
       },
       "pythonnet/3.0.1": {
@@ -275,6 +263,22 @@
             "related": ".xml"
           }
         }
+      },
+      "YoutubeDLSharp/1.0.0-beta6": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.2"
+        },
+        "compile": {
+          "lib/net6.0/YoutubeDLSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/YoutubeDLSharp.dll": {
+            "related": ".xml"
+          }
+        }
       }
     }
   },
@@ -405,14 +409,15 @@
         "runtime.json"
       ]
     },
-    "Newtonsoft.Json/13.0.1": {
-      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+    "Newtonsoft.Json/13.0.2": {
+      "sha512": "R2pZ3B0UjeyHShm9vG+Tu0EBb2lC8b0dFzV9gVn50ofHXh9Smjk6kTn7A/FdAsC8B5cKib1OnGYOXxRBz5XQDg==",
       "type": "package",
-      "path": "newtonsoft.json/13.0.1",
+      "path": "newtonsoft.json/13.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.md",
+        "README.md",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
@@ -421,27 +426,17 @@
         "lib/net40/Newtonsoft.Json.xml",
         "lib/net45/Newtonsoft.Json.dll",
         "lib/net45/Newtonsoft.Json.xml",
+        "lib/net6.0/Newtonsoft.Json.dll",
+        "lib/net6.0/Newtonsoft.Json.xml",
         "lib/netstandard1.0/Newtonsoft.Json.dll",
         "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/netstandard1.3/Newtonsoft.Json.dll",
         "lib/netstandard1.3/Newtonsoft.Json.xml",
         "lib/netstandard2.0/Newtonsoft.Json.dll",
         "lib/netstandard2.0/Newtonsoft.Json.xml",
-        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.13.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
-      ]
-    },
-    "NYoutubeDLP/0.13.0": {
-      "sha512": "qJXtGzna78rvVhFxuEgSI83LwN2G2rxig1t1fJ2mY6kChfLerPX+w65qMXhTBvmsxcLhbWT+QLCi3FeWxLFDaA==",
-      "type": "package",
-      "path": "nyoutubedlp/0.13.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netcoreapp3.1/NYoutubeDLP.dll",
-        "nyoutubedlp.0.13.0.nupkg.sha512",
-        "nyoutubedlp.nuspec"
       ]
     },
     "pythonnet/3.0.1": {
@@ -1114,12 +1109,30 @@
         "system.threading.tasks.4.3.0.nupkg.sha512",
         "system.threading.tasks.nuspec"
       ]
+    },
+    "YoutubeDLSharp/1.0.0-beta6": {
+      "sha512": "jzElKsJm5Ltwgd0I/+/TBL4azCMKAFstkz23cuxhdokxkvmzDgVw868EA7SnZYmge0Z/qcbQ0+0Q8IcqEfgA6w==",
+      "type": "package",
+      "path": "youtubedlsharp/1.0.0-beta6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net45/YoutubeDLSharp.dll",
+        "lib/net45/YoutubeDLSharp.xml",
+        "lib/net6.0/YoutubeDLSharp.dll",
+        "lib/net6.0/YoutubeDLSharp.xml",
+        "lib/netstandard2.0/YoutubeDLSharp.dll",
+        "lib/netstandard2.0/YoutubeDLSharp.xml",
+        "youtubedlsharp.1.0.0-beta6.nupkg.sha512",
+        "youtubedlsharp.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "FFMpegCore >= 5.1.0",
-      "NYoutubeDLP >= 0.13.0",
+      "YoutubeDLSharp >= 1.0.0-beta6",
       "pythonnet >= 3.0.1"
     ]
   },
@@ -1174,9 +1187,9 @@
             "target": "Package",
             "version": "[5.1.0, )"
           },
-          "NYoutubeDLP": {
+          "YoutubeDLSharp": {
             "target": "Package",
-            "version": "[0.13.0, )"
+            "version": "[1.0.0-beta6, )"
           },
           "pythonnet": {
             "target": "Package",
@@ -1194,30 +1207,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.16, 6.0.16]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[6.0.16, 6.0.16]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.16, 6.0.16]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.16, 6.0.16]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

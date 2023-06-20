@@ -8,6 +8,7 @@ namespace VideoUrlToChatBot
     {
         public void ConvertToMp3(string[] filesToConvert, string outputPath)
         {
+            /*
             string staticOutputPath = outputPath;
             foreach(string file in filesToConvert)
             {
@@ -15,8 +16,8 @@ namespace VideoUrlToChatBot
                 FFMpeg.ExtractAudio(file, outputPath);
                 Console.WriteLine($"Converted {file} to mp3 in {outputPath}");
             }
-             
+            */
         }
-        
+
     }
 }

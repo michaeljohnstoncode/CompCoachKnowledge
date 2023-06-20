@@ -6,7 +6,6 @@ C:\Users\Michael\source\repos\VideoUrlToChatBot\bin\Debug\net6.0\VideoUrlToChatB
 C:\Users\Michael\source\repos\VideoUrlToChatBot\bin\Debug\net6.0\FFMpegCore.dll
 C:\Users\Michael\source\repos\VideoUrlToChatBot\bin\Debug\net6.0\Instances.dll
 C:\Users\Michael\source\repos\VideoUrlToChatBot\bin\Debug\net6.0\Newtonsoft.Json.dll
-C:\Users\Michael\source\repos\VideoUrlToChatBot\bin\Debug\net6.0\NYoutubeDLP.dll
 C:\Users\Michael\source\repos\VideoUrlToChatBot\bin\Debug\net6.0\Python.Runtime.dll
 C:\Users\Michael\source\repos\VideoUrlToChatBot\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 C:\Users\Michael\source\repos\VideoUrlToChatBot\bin\Debug\net6.0\System.Text.Json.dll
@@ -22,3 +21,4 @@ C:\Users\Michael\source\repos\VideoUrlToChatBot\obj\Debug\net6.0\refint\VideoUrl
 C:\Users\Michael\source\repos\VideoUrlToChatBot\obj\Debug\net6.0\VideoUrlToChatBot.pdb
 C:\Users\Michael\source\repos\VideoUrlToChatBot\obj\Debug\net6.0\VideoUrlToChatBot.genruntimeconfig.cache
 C:\Users\Michael\source\repos\VideoUrlToChatBot\obj\Debug\net6.0\ref\VideoUrlToChatBot.dll
+C:\Users\Michael\source\repos\VideoUrlToChatBot\bin\Debug\net6.0\YoutubeDLSharp.dll

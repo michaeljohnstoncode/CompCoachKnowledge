@@ -1,17 +1,16 @@
-﻿
-using NYoutubeDL;
-using NYoutubeDL.Options;
-using System.IO;
+﻿using YoutubeDLSharp;
+using YoutubeDLSharp.Metadata;
+using YoutubeDLSharp.Options;
 
 public class DownloadVideo
 {
-    private YoutubeDLP _youtubeDlp = new();
+    private YoutubeDL _youtubeDl = new();
     private string _inputUrlFilePath = Path.Combine(Directory.GetCurrentDirectory(), "InputsOutputsAITraining\\urlLinks.txt");
-    private string _videoOutputPath;
+    private string _audioOutputPath;
 
-    public DownloadVideo(string videoOutputPath)
+    public DownloadVideo(string audioOutputPath)
     {
-        _videoOutputPath = videoOutputPath;
+        _audioOutputPath = audioOutputPath;
     }
 
     //using a library for YoutubeDL program which downloads videos from most popular websites
@@ -20,15 +19,9 @@ public class DownloadVideo
         //get url links from text file
         string[] urlLinks = GetUrlLinks();
 
-        //get current clip download options
-        _youtubeDlp.Options = Options.Deserialize(File.ReadAllText("options.config"));
-
         //setting clip download options to config
-        _youtubeDlp.YoutubeDlPath = "yt-dlp.exe";
-        _youtubeDlp.Options.FilesystemOptions.WindowsFilenames = true;
-        _youtubeDlp.Options.VerbositySimulationOptions.Simulate = false;
-        _youtubeDlp.Options.VerbositySimulationOptions.DumpSingleJson = false;
-        File.WriteAllText("options.config", _youtubeDlp.Options.Serialize());
+        _youtubeDl.YoutubeDLPath = "yt-dlp.exe";
+        _youtubeDl.FFmpegPath = "ffmpeg.exe";
 
         //download the videos
         foreach (string url in urlLinks)
@@ -36,27 +29,33 @@ public class DownloadVideo
             try
             {
                 //output error logs to console
-                _youtubeDlp.StandardOutputEvent += (sender, output) => Console.WriteLine(output);
-                _youtubeDlp.StandardErrorEvent += (sender, errorOutput) => Console.WriteLine(errorOutput);
+                var ytdlProc = new YoutubeDLProcess();
+                //capture the standard output and error output
+                ytdlProc.OutputReceived += (o, e) => Console.WriteLine(e.Data);
+                ytdlProc.ErrorReceived += (o, e) => Console.WriteLine("ERROR: " + e.Data);
 
-                //create output file path and set output file path in ytdlp options txt file
-                string fileName = FormatUrlForFile(url);
-                string outputFilePath = Path.Combine(_videoOutputPath, $"\\{fileName}");
-                _youtubeDlp.Options.FilesystemOptions.Output = outputFilePath;
-                File.WriteAllText("options.config", _youtubeDlp.Options.Serialize());
+                //set output folder for download
+                _youtubeDl.OutputFolder = _audioOutputPath;
 
-                //download the video
+                //download the video as mp3
                 Console.WriteLine("Starting download...");
                 Console.WriteLine("Your clip is currently being downloaded");
-                _youtubeDlp.Download(url);
+                var mp3 = await _youtubeDl.RunAudioDownload(url, AudioConversionFormat.Mp3);
+                string oldFileName = mp3.Data;
+                Console.WriteLine($"Path that ytdlp wrote to: {oldFileName}");
 
-                //if any errors occur in the download, then try updating yt-dlp program to the latest version (in hopes it will fix)
-                List<string> errors = _youtubeDlp.Info.Errors;
-                if (errors.Count > 0)
-                {
-                    //_updateYoutubeDLP.UpdateYoutubeDLP();
-                    await _youtubeDlp.DownloadAsync(url);
-                }
+
+                //get title and uploader name to create file name
+                var res = await _youtubeDl.RunVideoDataFetch(url);
+                VideoData video = res.Data;
+                string title = video.Title;
+                string uploader = video.Uploader;
+                string formatFileName = title + " uploader " + uploader;
+                string fileName = FormatNameForFile(formatFileName);
+                string newFileName = Path.Combine(_audioOutputPath, $"{fileName}.mp3");
+
+                //change file name by using File.Move
+                RenameFile(oldFileName, newFileName);
 
                 //if mp4 is downloaded and exists, delete url from the input Url file
                 bool doesFileExist = DoesFileExist(fileName);
@@ -72,11 +71,32 @@ public class DownloadVideo
             {
                 Console.WriteLine($"exception: {ex}");
                 Console.WriteLine("Download has canceled");
-                _youtubeDlp = new YoutubeDLP();
+                _youtubeDl = new YoutubeDL();
                 return;
             }
         }
 
+    }
+
+    public void RenameFile(string oldFilePath, string newFilePath)
+    {
+        // Check if the old file exists
+        if (File.Exists(oldFilePath))
+        {
+            // Check if the new file already exists
+            if (!File.Exists(newFilePath))
+            {
+                File.Move(oldFilePath, newFilePath);
+            }
+            else
+            {
+                Console.WriteLine("A file with the new name already exists.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("The file to be renamed does not exist.");
+        }
     }
 
     public string[] GetUrlLinks()
@@ -86,19 +106,20 @@ public class DownloadVideo
         return urlLinks;
     }
 
-    public static string FormatUrlForFile(string input)
+    public static string FormatNameForFile(string input)
     {
         if (input == null)
         {
             return null;
         }
-        return input.Replace("/", "").Replace("\\", "").Replace(":", "").Replace("?", "");
+        return input.Replace("/", "").Replace("\\", "").Replace(":", "").Replace("?", "").Replace("|", "")
+                    .Replace("*", "").Replace("<", "").Replace(">", "").Replace("`", "").Replace("\"", "");
     }
 
     public bool DoesFileExist(string fileName)
     {
         bool doesFileExist = false;
-        string filePath = _videoOutputPath;
+        string filePath = _audioOutputPath;
         var files = Directory.EnumerateFiles(filePath);
         doesFileExist = files.Any(file => Path.GetFileNameWithoutExtension(file) == fileName);
         if (File.Exists(filePath) == true)

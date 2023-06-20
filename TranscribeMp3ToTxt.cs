@@ -12,7 +12,7 @@ namespace VideoUrlToChatBot
 
         public void TranscribeMp3(string mp3Path)
         {
-            var pythonDllLocation = "C:\\Python310\\python310.dll";
+            var pythonDllLocation = "C:\\Python310\\python310.dll"; 
             Environment.SetEnvironmentVariable("PYTHONNET_PYDLL", pythonDllLocation);
 
             PythonEngine.Initialize();
