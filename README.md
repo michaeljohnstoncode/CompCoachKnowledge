@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 # VideoUrlToChatBot
-=======
-# VideoUrlToChatBot
->>>>>>> master
