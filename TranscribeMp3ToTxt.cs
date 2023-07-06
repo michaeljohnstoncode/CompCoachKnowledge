@@ -27,11 +27,17 @@ namespace VideoUrlToChatBot
                 var model = whisper.InvokeMethod("load_model", new PyString(modelType));
                 foreach (var file in files)
                 {
-                    var result = model.InvokeMethod("transcribe", new PyString(file));
-                    var fileName = Path.GetFileNameWithoutExtension(file);
-                    File.WriteAllText(transcribeOutputDirectory + $"\\{fileName}.txt", result["text"].As<string>());
+                    if (!File.Exists(file))
+                    {
+                        var result = model.InvokeMethod("transcribe", new PyString(file));
+                        var fileName = Path.GetFileNameWithoutExtension(file);
+                        File.WriteAllText(transcribeOutputDirectory + $"\\{fileName}.txt", result["text"].As<string>());
+                    }
+                    else
+                    {
+                        Console.WriteLine($"This file already exists: {file}. Do not transcribe");
+                    }
                 }
-
             }
         }
     }
