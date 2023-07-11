@@ -42,8 +42,7 @@ public class DownloadYoutubeToMp3
                 Console.WriteLine("Your clip is currently being downloaded");
                 var mp3 = await _youtubeDl.RunAudioDownload(url, AudioConversionFormat.Mp3);
                 string oldFileName = mp3.Data;
-                Console.WriteLine($"Path that ytdlp wrote to: {oldFileName}");
-
+                Console.WriteLine($"Download completed.");
 
                 //get title and uploader name to create file name
                 var res = await _youtubeDl.RunVideoDataFetch(url);
@@ -87,6 +86,7 @@ public class DownloadYoutubeToMp3
             if (!File.Exists(newFilePath))
             {
                 File.Move(oldFilePath, newFilePath);
+                Console.WriteLine($"The downloaded file path is... \n{newFilePath}");
             }
             else
             {
