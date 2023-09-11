@@ -7,10 +7,12 @@
     <Nullable>enable</Nullable>
     <AssemblyName>VideoUrlToChatBot</AssemblyName>
     <RootNamespace>VideoUrlToChatBot</RootNamespace>
+    <UserSecretsId>6b180df0-9dda-476a-85fb-d32d136af3fe</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FFMpegCore" Version="5.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
     <PackageReference Include="OpenAI" Version="1.7.2" />
     <PackageReference Include="Pinecone.NET" Version="1.2.0" />
     <PackageReference Include="pythonnet" Version="3.0.1" />

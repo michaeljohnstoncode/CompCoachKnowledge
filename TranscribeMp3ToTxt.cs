@@ -20,7 +20,7 @@ namespace VideoUrlToChatBot
             var mp3InputPath = mp3Path;
             var files = Directory.GetFiles(mp3InputPath, "*.mp3");
             var transcribeOutputDirectory = Path.Combine(Directory.GetCurrentDirectory(), "InputsOutputsAITraining\\docs");
-            string modelType = "tiny";
+            string modelType = "small";
             using (Py.GIL())
             {
                 var whisper = Py.Import("whisper");

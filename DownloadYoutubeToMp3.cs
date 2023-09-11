@@ -41,6 +41,7 @@ public class DownloadYoutubeToMp3
                 Console.WriteLine("Starting download...");
                 Console.WriteLine("Your clip is currently being downloaded");
                 var mp3 = await _youtubeDl.RunAudioDownload(url, AudioConversionFormat.Mp3);
+                
                 string oldFileName = mp3.Data;
                 Console.WriteLine($"Download completed.");
 
@@ -55,7 +56,7 @@ public class DownloadYoutubeToMp3
 
                 //change file name by using File.Move
                 RenameFile(oldFileName, newFileName);
-
+/*
                 //if mp4 is downloaded and exists, delete url from the input Url file
                 bool doesFileExist = DoesFileExist(fileName);
                 if (doesFileExist == true)
@@ -63,7 +64,7 @@ public class DownloadYoutubeToMp3
                     DeleteUrlFromFile(url);
                     Console.WriteLine($"Deleted Url: {url} from file after download complete.");
                 }
-
+*/
             }
             //task canceled exception for catching when canceling download (I don't know why this happens). creates new downloader instance
             catch (System.Threading.Tasks.TaskCanceledException ex)

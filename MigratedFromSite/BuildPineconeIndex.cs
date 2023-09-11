@@ -50,7 +50,7 @@ namespace ChatBotCoachWebsite.Helpers
             var indexes = await pinecone.ListIndexes();
 
             //index name (only have 1 index for now)
-            var indexName = "compcoachindex";
+            var indexName = "indexcoachbot";
 
             //create a new pinecone index incase it doesn't exist
             await CreatePineconeIndexAsync(pinecone, indexes, indexName);

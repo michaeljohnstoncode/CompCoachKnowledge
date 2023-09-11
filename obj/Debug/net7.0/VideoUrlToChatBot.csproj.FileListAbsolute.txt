@@ -42,3 +42,9 @@ C:\Users\Michael\source\repos\VideoUrlToChatBot\obj\Debug\net7.0\refint\VideoUrl
 C:\Users\Michael\source\repos\VideoUrlToChatBot\obj\Debug\net7.0\VideoUrlToChatBot.pdb
 C:\Users\Michael\source\repos\VideoUrlToChatBot\obj\Debug\net7.0\VideoUrlToChatBot.genruntimeconfig.cache
 C:\Users\Michael\source\repos\VideoUrlToChatBot\obj\Debug\net7.0\ref\VideoUrlToChatBot.dll
+C:\Users\Michael\source\repos\VideoUrlToChatBot\bin\Debug\net7.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\Michael\source\repos\VideoUrlToChatBot\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\Michael\source\repos\VideoUrlToChatBot\bin\Debug\net7.0\Microsoft.Extensions.Configuration.UserSecrets.dll
+C:\Users\Michael\source\repos\VideoUrlToChatBot\bin\Debug\net7.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Michael\source\repos\VideoUrlToChatBot\bin\Debug\net7.0\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\Michael\source\repos\VideoUrlToChatBot\bin\Debug\net7.0\Microsoft.Extensions.FileSystemGlobbing.dll
