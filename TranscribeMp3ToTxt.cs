@@ -27,7 +27,7 @@ namespace VideoUrlToChatBot
                 var model = whisper.InvokeMethod("load_model", new PyString(modelType));
                 foreach (var file in files)
                 {
-                    if (!File.Exists(file))
+                    if (File.Exists(file))
                     {
                         var result = model.InvokeMethod("transcribe", new PyString(file));
                         var fileName = Path.GetFileNameWithoutExtension(file);

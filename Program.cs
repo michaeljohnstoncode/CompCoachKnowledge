@@ -10,18 +10,46 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        Console.WriteLine("Hello, welcome!");
-        Console.WriteLine("The first step is to download the links in text file to an MP3.\nWould you like to download these links to mp3? (y/n)");
-        string confirmDownload = Console.ReadLine();
-        if (confirmDownload != "y")
-        {
-            return;
-        }
         //set audio output path
         string path = "InputsOutputsAITraining\\AudioOutput";
         string audioOutputPath = Path.Combine(Directory.GetCurrentDirectory(), path);
-        CMDCommand cmdCommand = new(audioOutputPath);
-        cmdCommand.CMDDownloadCommand();
+
+        Console.WriteLine("Hello, welcome!");
+        Console.WriteLine("Choose the desired action that you want to take. Enter the desired number for the action (ex: '1', '2')" +
+            "\n Type 'exit' to stop and exit the program. ");
+
+        Console.WriteLine("1. Download links in text file to .mp3");
+        Console.WriteLine("2. Transcribe the .mp3 files to .txt documents");
+        Console.WriteLine("3. Upsert the .txt documents to Pinecone index database");
+        string selection = Console.ReadLine();
+        while(selection != "exit")
+        {
+            if (selection == "1")
+            {
+                //download the links to mp3
+                CMDCommand cmdCommand = new(audioOutputPath);
+                cmdCommand.CMDDownloadCommand();
+            }
+            if (selection == "2")
+            {
+                //transcribe mp3 to txt files
+                var transcribe = new TranscribeMp3ToTxt();
+                transcribe.TranscribeMp3(audioOutputPath);
+            }
+            if (selection == "3")
+            {
+                //upsert txt documents to Pinecone index
+                var dataProvider = new FileDataProvider();
+                var keyProvider = new TextFileKeyProvider();
+                var openAiProvider = new OpenAIService(new TextFileKeyProvider());
+                var checkAsciiCompatible = new CheckAsciiCompatible();
+                var buildPineconeIndex = new BuildPineconeIndex(dataProvider, keyProvider, openAiProvider, checkAsciiCompatible);
+                await buildPineconeIndex.UpsertPineconeIndexAsync();
+            }
+
+            selection = Console.ReadLine();
+        }
+
 
         /*
         //set login
@@ -39,29 +67,5 @@ class Program
         await downloadVideos.DownloadClipToFile();
         */
 
-        Console.WriteLine("All links have been converted to mp3's. Would you like to transcribe these now? (y/n)");
-        string confirmTranscribe = Console.ReadLine();
-        if(confirmDownload != "y") 
-        {
-            return;
-        }
-
-        //transcribe mp3 to txt files
-        var transcribe = new TranscribeMp3ToTxt();
-        transcribe.TranscribeMp3(audioOutputPath);
-        
-        Console.WriteLine("All mp3's have been transcribed. Would you like to upsert to Pinecone database index? (y/n)");
-        string confirmUpsert = Console.ReadLine();
-        if (confirmUpsert != "y")
-        {
-            return;
-        }
-
-        //upsert txt file data to Pinecone index
-        var dataProvider = new TextFileCustomDataProvider();
-        var keyProvider = new TextFileKeyProvider();
-        var openAiProvider = new OpenAIService(new TextFileKeyProvider());
-        var buildPineconeIndex = new BuildPineconeIndex(dataProvider, keyProvider, openAiProvider);
-        await buildPineconeIndex.UpsertPineconeIndexAsync();
     }
 }
